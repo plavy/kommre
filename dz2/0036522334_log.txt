@@ -1,0 +1,13 @@
+Popis naredaba za potpisivanje:
+
+// Hash filea
+openssl dgst -sha256 0036522334.imn > sha_hash
+
+// Privatni kljuc
+openssl genrsa -out private_key.pem 2048
+
+// Javni kljuc
+openssl rsa -in private_key.pem -outform PEM -pubout -out 0036522334.pem
+
+// Digitalni potpis
+openssl rsautl -sign -inkey private_key.pem -keyform PEM -in sha_hash > 0036522334.sig
